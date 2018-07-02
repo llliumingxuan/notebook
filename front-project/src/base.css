@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+img{
+  border: 0;
+}
+
+ul,ol li{
+  list-style: none;
+}
+a{
+  color:#555; text-decoration:none;
+}
+body{
+  background-color: #eee;
+  color : #555555;
+  font-size: 14px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+html,body{
+  height: 100%;
+}
