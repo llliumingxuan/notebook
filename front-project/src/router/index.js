@@ -7,51 +7,44 @@ import thingDetail from '../components/thingDetail'
 
 Vue.use(Router)
 
-export default new Router({
-  mode : 'history',
+const router = new Router({
+  mode: 'history',
   routes: [
     {
-      path : '/',
-      component : index
+      path: '/',
+      component: index
     },
     {
-      path : '/index',
-      redirect : '/'
+      path: '/index',
+      redirect: '/'
     },
     //必做事件列表页
     {
-      path : '/must-thing',
+      path: '/must-thing',
       component: mustDo
     },
     //选做事件列表页
     {
-      path : '/choose-thing',
-      component : chooseDo
+      path: '/choose-thing',
+      component: chooseDo
     },
     {
-      path : '/add-thing'
+      path: '/add-thing'
     },
     {
-      path : '/thing-detail',
-      component : thingDetail,
-      beforeEnter : (to,from,next)=>{
+      path: '/thing-detail',
+      component: thingDetail,
+      beforeEnter: (to, from, next) => {
         const t = this;
         let $vue = t.a.app;
         let id = typeof $vue.$store === 'object' ? $vue.$store.getters.getToDoThingId : '';
-        if(id === ''){
-          /*if(from.path === '/'){
-            $vue.$router.push({path : ''});
-            next()
-          }else{
-            $vue.$router.push({path: ''});
-            next()
-          }*/
-          next({
-            path : '/'
-          })
+        if (id !== '') {
+          next()
+        } else {
+          router.push({path : '/'})
         }
-        next()
       }
     }
   ]
 })
+export default router
